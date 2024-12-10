@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      - echo Installing Apache and PHP...
+      - sudo yum update -y
+      - sudo yum install -y httpd php
+  build:
+    commands:
+      - echo Configuring index.html...
+      - echo "<html><body><h1>Mensaje personalizado: ¡Hello from CodeBuild!</h1></body></html>" > /var/www/html/index.html
+      - sudo systemctl start httpd
+      - sudo systemctl enable httpd
+artifacts:
+  files:
+    - '**/*'
