@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /   # Indicates that all the artifact files should be copied
+    destination: /var/www/html   
+hooks:
+  AfterInstall:
+    - location: scripts/start_apache.sh   # Script para reiniciar Apache después de la instalación
+      timeout: 300
+      runas: root
