@@ -1,7 +1,7 @@
 #!/bin/bash
-set -e  # Detiene el script si ocurre algún error
+set -e  # Stops if an error occurs
 
-# Actualiza el sistema e instala Apache y PHP
+# Updates and installs apache and PHP
 yum update -y
 yum install -y httpd php
 
