@@ -5,15 +5,21 @@ phases:
     runtime-versions:
       python: 3.8
     commands:
-      - echo Installing Apache and PHP...
-      - sudo yum update -y
-      - sudo yum install -y httpd php
+      - echo "Starting the build process..."
+      - yum update -y
+      - yum install -y httpd php
   build:
     commands:
-      - echo Configuring index.html...
-      - echo "<html><body><h1>Mensaje personalizado: ¡Hello from CodeBuild!</h1></body></html>" > /var/www/html/index.html
-      - sudo systemctl start httpd
-      - sudo systemctl enable httpd
+      - echo "Building the application..."
+      - echo "<?php echo 'Hello, this is a test'; ?>" > /var/www/html/index.php
+      - echo "Build completed."
+  post_build:
+    commands:
+      - echo "Preparing the artifact for deployment..."
+      - zip -r testcase1_Output.zip /var/www/html
+      - echo "Artifact prepared."
+
 artifacts:
   files:
-    - '**/*'
+    - testcase1_Output.zip
+  discard-paths: no
