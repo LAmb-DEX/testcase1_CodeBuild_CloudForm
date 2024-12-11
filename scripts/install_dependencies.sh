@@ -10,5 +10,3 @@ if ! systemctl is-active --quiet httpd; then
   systemctl start httpd
   systemctl enable httpd
 fi
-
-echo "Apache y PHP instalados correctamente."
