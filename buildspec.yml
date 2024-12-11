@@ -17,6 +17,8 @@ phases:
     commands:
       - echo "Preparing the artifact for deployment..."
       - zip -r testcase1_Output.zip /var/www/html
+      - cp appspec.yml
+      - zip -ur testcase1_Output.zip appspec.yml  #Adds appspec to the artifact
       - echo "Artifact prepared."
 
 artifacts:
