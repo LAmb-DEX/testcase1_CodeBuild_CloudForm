@@ -11,11 +11,13 @@ phases:
   build:
     commands:
       - echo "Building the application..."
-      - echo "<?php echo 'Hello, this is a test'; ?>" > /var/www/html/index.php
+      - echo "<?php echo 'Hello, this is a test'; ?>" > index.php
       - echo "Build completed."
   post_build:
     commands:
       - echo "Artifact prepared."
+      - mkdir -p /var/www/html
+      - mv index.php /var/www/html/index.php
 artifacts:
   files:
     - appspec.yml
