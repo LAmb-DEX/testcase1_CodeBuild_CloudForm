@@ -8,8 +8,8 @@ phases:
       - echo "Starting the build process..."
       - yum update -y
       - yum install -y httpd php
-      - sudo systemctl start httpd
-      - sudo systemctl enable httpd
+      - systemctl start httpd
+      - systemctl enable httpd
 
   build:
     commands:
@@ -20,15 +20,14 @@ phases:
   post_build:
     commands:
       - echo "Preparing the artifact for deployment..."
-      # Trabajar en el directorio actual sin crear nuevas carpetas
-      - cp -r /var/www/html/* ./var/www/html/  
-      - cp appspec.yml ./ 
-      - mkdir -p ./scripts  
-      - cp scripts/start_apache.sh ./scripts/  
-      - cp scripts/install_dependencies.sh ./scripts/  
+      # Empaquetar los archivos en un ZIP sin crear nuevas carpetas
+      - zip -r $CODEBUILD_ARTIFACTS_OUTPUT_PATH /var/www/html
+      - zip -ur $CODEBUILD_ARTIFACTS_OUTPUT_PATH appspec.yml  # Añadir appspec.yml
+      - zip -ur $CODEBUILD_ARTIFACTS_OUTPUT_PATH scripts/start_apache.sh  # Añadir script
+      - zip -ur $CODEBUILD_ARTIFACTS_OUTPUT_PATH scripts/install_dependencies.sh  # Añadir otro script
       - echo "Artifact prepared."
 
 artifacts:
   files:
-    - /**  
+    - $CODEBUILD_ARTIFACTS_OUTPUT_PATH  # Usa el archivo .zip automáticamente generado
   discard-paths: no
