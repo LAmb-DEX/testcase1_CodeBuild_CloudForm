@@ -18,7 +18,8 @@ phases:
       - echo "Preparing the artifact for deployment..."
       - zip -r Output1 /var/www/html
       - zip -ur Output1 appspec.yml  #Adds appspec to the artifact
-      - zip -ur Output1 /var/www/html /scripts/start_apache.sh
+      - zip -ur Output1 /scripts/start_apache.sh
+      - zip -ur Output.zip /install_dependencies.sh
       - echo "Artifact prepared."
 
 artifacts:
