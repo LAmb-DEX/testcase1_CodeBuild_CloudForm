@@ -6,10 +6,10 @@ phases:
       python: 3.8
     commands:
       - echo "Starting the build process..."
-      - yum update -y
-      - yum install -y httpd php
-      - systemctl start httpd
-      - systemctl enable httpd
+      - sudo yum update -y
+      - sudo yum install -y httpd php
+      - sudo systemctl start httpd
+      - sudo systemctl enable httpd
 
   build:
     commands:
