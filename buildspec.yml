@@ -6,24 +6,25 @@ phases:
       python: 3.8
     commands:
       - echo "Starting the build process..."
-      - sudo yum update -y
-      - sudo yum install -y httpd php
-      - sudo systemctl start httpd
-      - sudo systemctl enable httpd
-
+      - yum update -y
+      - yum install -y httpd php
+      - systemctl start httpd
+      - systemctl enable httpd
   build:
     commands:
       - echo "Building the application..."
       - echo "<?php echo 'Hello, this is a test'; ?>" > /var/www/html/index.php
       - echo "Build completed."
-
   post_build:
     commands:
       - echo "Preparing the artifact for deployment..."
+      - zip -r Output11.zip /var/www/html
+      - zip -ur Output11.zip appspec.yml
+      - zip -ur Output11.zip scripts/start_apache.sh
+      - zip -ur Output11.zip install_dependencies.sh
+      - echo "Artifact prepared."
 artifacts:
   files:
-    - appspec.yml
-    - scripts/start_apache.sh
-    - scripts/install_dependencies.sh
-    - var/www/html/index.php
- 
+    - '**/*'
+  base-directory: 'Output11.zip'
+
