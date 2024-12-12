@@ -20,16 +20,10 @@ phases:
   post_build:
     commands:
       - echo "Preparing the artifact for deployment..."
-      - mkdir -p ./var/www/html  # Crear la estructura de directorios si es necesario
-      - cp -r /var/www/html/* ./var/www/html/  # Copiar el contenido de /var/www/html
-      - cp appspec.yml ./  # Copiar el archivo appspec.yml
-      - mkdir -p ./scripts  # Crear la carpeta scripts
-      - cp scripts/start_apache.sh ./scripts/  # Copiar los scripts necesarios
-      - cp scripts/install_dependencies.sh ./scripts/  # Copiar el otro script
-
 artifacts:
   files:
     - appspec.yml
-    - var/www/html/**/*  # Incluir todos los archivos dentro de html
-    - scripts/**/*  # Incluir todos los archivos dentro de scripts
-  discard-paths: no
+    - scripts/start_apache.sh
+    - scripts/install_dependencies.sh
+    - var/www/html/index.php
+ 
