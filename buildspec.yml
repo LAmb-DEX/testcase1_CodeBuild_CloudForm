@@ -18,7 +18,7 @@ phases:
       - echo "Preparing the artifact for deployment..."
       - mkdir -p testcase1/var/www/html
       - mkdir -p testcase1/scripts
-      - cp -r /var/www/html testcase1/var/www/html
+      - cp -r /var/www/html/* testcase1/var/www/html/  # Copia solo el contenido
       - cp appspec.yml testcase1/
       - cp scripts/start_apache.sh testcase1/scripts/
       - cp scripts/install_dependencies.sh testcase1/scripts/
