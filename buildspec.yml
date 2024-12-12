@@ -16,13 +16,13 @@ phases:
   post_build:
     commands:
       - echo "Preparing the artifact for deployment..."
-      - zip -r testcase1_Output.zip /var/www/html
-      - zip -ur testcase1_Output.zip appspec.yml  #Adds appspec to the artifact
-      - zip -ur testcase1_Output.zip /var/www/html scripts/start_apache.sh
-      - zip -ur testcase1_Output.zip /var/www/html scripts/install_dependencies.sh
+      - mkdir -p testcase1/var/www/html
+      - cp -r /var/www/html testcase1/var/www/html
+      - cp appspec.yml testcase1/
+      - cp scripts/start_apache.sh testcase1/scripts/
+      - cp scripts/install_dependencies.sh testcase1/scripts/
       - echo "Artifact prepared."
-
 artifacts:
   files:
-    - testcase1.zip
+    - testcase1/**
   discard-paths: no
