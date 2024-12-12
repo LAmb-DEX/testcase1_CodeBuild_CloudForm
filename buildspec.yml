@@ -21,5 +21,5 @@ artifacts:
     - appspec.yml
     - scripts/start_apache.sh
     - scripts/install_dependencies.sh
-    - var/www/html/index.php
+    - /var/www/html/index.php
   discard-paths: no
