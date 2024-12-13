@@ -12,7 +12,7 @@ phases:
   build:
     commands:
       - echo "Running test..."
-      - grep -Fq "Hello, this is a test!" index.html
+      - grep -Fq "Hello, test!" index.html
   post_build:
     commands:
       - echo "This is the post-build phase"
