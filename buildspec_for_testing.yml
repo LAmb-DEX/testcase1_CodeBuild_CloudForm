@@ -6,7 +6,7 @@ phases:
       python: 3.8
     commands:
       - echo "This is the install phase..."
-  pre-build:
+  pre_build:
     commands:
       - echo "This is the pre-build phase"
   build:
