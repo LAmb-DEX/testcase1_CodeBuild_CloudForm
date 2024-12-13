@@ -1,5 +1,6 @@
 version: 0.2
-
+# Testing if I can create and index file and send it to the artifact
+#The previous commit used the index.html which is in the GitHub repository
 phases:
   install:
     runtime-versions:
@@ -11,8 +12,9 @@ phases:
   build:
     commands:
       - echo "Building the application..."
-      - mkdir -p  /var/www/html
-      - cp index.html /var/www/html
+      - echo "<?php echo 'Hello, this is a test'; ?>" > index.php
+      - mkdir -p /var/www/html
+      - cp index.php /var/www/html
   post_build:
     commands:
       - echo "Moving index.html"
@@ -21,5 +23,5 @@ artifacts:
     - appspec.yml
     - scripts/start_apache.sh
     - scripts/install_dependencies.sh
-    - /var/www/html/index.html
+    - /var/www/html/index.php
   discard-paths: no
