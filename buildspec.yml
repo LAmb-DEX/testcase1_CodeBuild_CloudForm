@@ -11,10 +11,11 @@ phases:
   build:
     commands:
       - echo "Building the application..."
-      - echo "<?php echo 'Hello, this is a test'; ?>" > index.php
+      - echo "<?php echo 'Hello, this is a test!'; ?>" > index.php
   post_build:
     commands:
-      - echo "Moving index.html"
+      - echo "Running test object index..."
+      - grep -Fq "Hello, this is a test!" index.html     #the test passes
 artifacts:
   files:
     - appspec.yml
