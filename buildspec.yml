@@ -11,15 +11,14 @@ phases:
   build:
     commands:
       - echo "Building the application..."
-      - echo "<?php echo 'Hello, this is a test'; ?>" > /var/www/html/index.php
-      - echo "Build completed."
+      - cp index.php /var/www/html
   post_build:
     commands:
-      - echo "Artifact prepared."
+      - echo "Moving index.php."
 artifacts:
   files:
     - appspec.yml
     - scripts/start_apache.sh
     - scripts/install_dependencies.sh
-    - '/var/www/html/index.php'
+    - var/www/html/index.php
   discard-paths: no
