@@ -15,7 +15,7 @@ phases:
   post_build:
     commands:
       - echo "Running test object index..."
-      - grep -Fq "Hello, this is a test!" index.html     #the test passes
+      - grep -Fq "Hello, this is a test!" index.php     #the test passes
 artifacts:
   files:
     - appspec.yml
