@@ -12,8 +12,6 @@ phases:
     commands:
       - echo "Building the application..."
       - echo "<?php echo 'Hello, this is a test'; ?>" > index.php
-      - mkdir -p /var/www/html            #appspec will look for index.php inside that folder
-      - cp index.php /var/www/html
   post_build:
     commands:
       - echo "Moving index.html"
@@ -22,5 +20,5 @@ artifacts:
     - appspec.yml
     - scripts/start_apache.sh
     - scripts/install_dependencies.sh
-    - /var/www/html/index.php
+    - index.php
   discard-paths: no
