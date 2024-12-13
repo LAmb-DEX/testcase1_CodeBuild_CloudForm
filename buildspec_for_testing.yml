@@ -5,9 +5,7 @@ phases:
     runtime-versions:
       python: 3.8
     commands:
-      - echo "Starting the build process..."
-      - yum update -y
-      - yum install -y httpd php
+      - echo "This is the install phase..."
   pre-build:
     commands:
       - echo "This is the pre-build phase"
