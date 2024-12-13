@@ -1,6 +1,5 @@
 version: 0.2
-# Testing if I can create and index file and send it to the artifact
-#The previous commit used the index.html which is in the GitHub repository
+# Creates and index file insted of using the one in GitHub
 phases:
   install:
     runtime-versions:
