@@ -1,0 +1,15 @@
+version: 0.2
+#Creates artifact
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      - echo "Starting the build process..."
+artifacts:
+  files:
+    - appspec.yml
+    - scripts/start_apache.sh
+    - scripts/install_dependencies.sh
+    - index.html
+  discard-paths: no
