@@ -1,12 +1,13 @@
 #!/bin/bash
-set -e  # Stops if an error occurs
 
 # Updates and installs apache and PHP
-yum update -y
-yum install -y httpd php
+sudo yum update -y
+sudo yum install -y httpd
+sudo yum install -y php
 
-# Inicia Apache si no está corriendo
-if ! systemctl is-active --quiet httpd; then
-  systemctl start httpd
-  systemctl enable httpd
-fi
+# Starts and enable the services
+sudo systemctl start httpd
+sudo systemctl start php
+
+sudo systemctl enable httpd
+sudo systemctl enable php
