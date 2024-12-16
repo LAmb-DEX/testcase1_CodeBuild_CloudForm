@@ -7,7 +7,7 @@ sudo yum install -y php
 
 # Starts and enable the services
 sudo systemctl start httpd
-sudo systemctl start php
+sudo systemctl start php-fpm
 
 sudo systemctl enable httpd
-sudo systemctl enable php
+sudo systemctl enable php-fpm
